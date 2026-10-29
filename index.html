@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CampusFinder – College Lost & Found</title>
+  <meta name="description" content="CampusFinder is your college's smart lost and found platform. Report lost items, browse found items, and get reunited with your belongings fast." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <span class="logo-icon">🔍</span>
+        <span class="logo-text">Campus<span class="logo-accent">Finder</span></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#browse" class="nav-link">Browse Items</a></li>
+        <li><a href="#report" class="nav-link">Report Item</a></li>
+        <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-secondary" id="loginBtn">Sign In</button>
+        <button class="btn-primary" id="reportNavBtn">+ Report Item</button>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="hero-orb orb-1"></div>
+      <div class="hero-orb orb-2"></div>
+      <div class="hero-orb orb-3"></div>
+      <div class="floating-shapes">
+        <div class="shape s1">🎒</div>
+        <div class="shape s2">🔑</div>
+        <div class="shape s3">📱</div>
+        <div class="shape s4">💳</div>
+        <div class="shape s5">🎧</div>
+        <div class="shape s6">📚</div>
+      </div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span>🎓 Official Campus Lost &amp; Found Portal</span>
+      </div>
+      <h1 class="hero-title">
+        Lost something on<br />
+        <span class="gradient-text">campus?</span><br />
+        We'll find it.
+      </h1>
+      <p class="hero-subtitle">
+        CampusFinder connects students and staff across our college campus.
+        Report a lost item or browse found items — reunited in minutes, not weeks.
+      </p>
+      <div class="hero-search">
+        <div class="search-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="heroSearch" placeholder="Search for lost items, e.g. 'blue backpack', 'AirPods'..." class="search-input" />
+          <button class="search-btn" id="heroSearchBtn">Search</button>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num" data-target="1247">0</span>
+          <span class="stat-label">Items Reunited</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-target="342">0</span>
+          <span class="stat-label">Active Listings</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-target="98">0</span>
+          <span class="stat-label">% Success Rate</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="hero-img-glow"></div>
+      <img src="hero_illustration.jpg" alt="College lost and found illustration" class="hero-img" />
+    </div>
+  </section>
+
+  <!-- ===== QUICK ACTIONS ===== -->
+  <section class="quick-actions">
+    <div class="container">
+      <div class="action-cards">
+        <div class="action-card lost-card" id="reportLostBtn">
+          <div class="action-icon">😟</div>
+          <div class="action-content">
+            <h3>I Lost Something</h3>
+            <p>Report your lost item so finders can identify and return it to you</p>
+          </div>
+          <span class="action-arrow">→</span>
+        </div>
+        <div class="action-card found-card" id="reportFoundBtn">
+          <div class="action-icon">😊</div>
+          <div class="action-content">
+            <h3>I Found Something</h3>
+            <p>Submit a found item to help reunite it with its rightful owner</p>
+          </div>
+          <span class="action-arrow">→</span>
+        </div>
+        <div class="action-card browse-card" onclick="scrollToSection('browse')">
+          <div class="action-icon">🔎</div>
+          <div class="action-content">
+            <h3>Browse All Items</h3>
+            <p>Search through all active lost and found listings on campus</p>
+          </div>
+          <span class="action-arrow">→</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BROWSE ITEMS ===== -->
+  <section class="browse-section" id="browse">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">📋 Browse Listings</div>
+        <h2 class="section-title">Active <span class="gradient-text">Lost &amp; Found</span> Items</h2>
+        <p class="section-subtitle">Browse all recently reported items on campus. Filter by category or status to find what you're looking for.</p>
+      </div>
+      <div class="filters-bar">
+        <div class="filter-tabs" id="filterTabs">
+          <button class="filter-tab active" data-filter="all">All Items</button>
+          <button class="filter-tab" data-filter="lost">Lost</button>
+          <button class="filter-tab" data-filter="found">Found</button>
+          <button class="filter-tab" data-filter="reunited">Reunited ✓</button>
+        </div>
+        <div class="category-filter">
+          <select id="categoryFilter" class="category-select">
+            <option value="all">All Categories</option>
+            <option value="electronics">Electronics</option>
+            <option value="clothing">Clothing &amp; Accessories</option>
+            <option value="bags">Bags &amp; Backpacks</option>
+            <option value="keys">Keys &amp; Cards</option>
+            <option value="books">Books &amp; Stationery</option>
+            <option value="jewelry">Jewelry &amp; Personal</option>
+            <option value="sports">Sports &amp; Recreation</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="location-filter">
+          <select id="locationFilter" class="category-select">
+            <option value="all">All Locations</option>
+            <option value="library">Library</option>
+            <option value="cafeteria">Cafeteria</option>
+            <option value="lab">Computer Lab</option>
+            <option value="gym">Gymnasium</option>
+            <option value="parking">Parking Lot</option>
+            <option value="classroom">Classrooms</option>
+            <option value="hostel">Hostel</option>
+            <option value="auditorium">Auditorium</option>
+          </select>
+        </div>
+      </div>
+      <div class="items-grid" id="itemsGrid"></div>
+      <div class="no-items hidden" id="noItems">
+        <div class="no-items-icon">🔍</div>
+        <h3>No items found</h3>
+        <p>Try adjusting your filters or search terms</p>
+      </div>
+      <div class="load-more-wrapper">
+        <button class="btn-outline" id="loadMoreBtn">Load More Items</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">⚡ Simple Process</div>
+        <h2 class="section-title">How <span class="gradient-text">CampusFinder</span> Works</h2>
+        <p class="section-subtitle">Getting your belongings back (or helping someone else) takes just a few steps.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <div class="step-icon">📝</div>
+          <h3>Report Your Item</h3>
+          <p>Fill out a quick form with details about your lost or found item — description, location, date, and a photo.</p>
+        </div>
+        <div class="step-connector">→</div>
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <div class="step-icon">🔔</div>
+          <h3>Get Notified</h3>
+          <p>Our system matches your item with other listings. You'll get an instant notification when there's a match.</p>
+        </div>
+        <div class="step-connector">→</div>
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <div class="step-icon">🤝</div>
+          <h3>Connect &amp; Claim</h3>
+          <p>Chat securely through the portal, verify your identity, and pick up your item from the campus security office.</p>
+        </div>
+        <div class="step-connector">→</div>
+        <div class="step-card">
+          <div class="step-number">04</div>
+          <div class="step-icon">🎉</div>
+          <h3>Reunited!</h3>
+          <p>Mark the item as returned and help us keep track of our campus success rate. Your item is home!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== REPORT ITEM MODAL ===== -->
+  <div class="modal-overlay" id="reportModal">
+    <div class="modal" id="reportModalContent">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-header">
+        <div class="modal-tabs">
+          <button class="modal-tab active" data-tab="lost" id="tabLost">😟 I Lost Something</button>
+          <button class="modal-tab" data-tab="found" id="tabFound">😊 I Found Something</button>
+        </div>
+      </div>
+      <form class="report-form" id="reportForm" novalidate>
+        <div class="form-grid">
+          <div class="form-group full-width">
+            <label for="itemName">Item Name / Title *</label>
+            <input type="text" id="itemName" placeholder="e.g. Black Sony Headphones, Blue Jansport Backpack..." required />
+          </div>
+          <div class="form-group">
+            <label for="itemCategory">Category *</label>
+            <select id="itemCategory" required>
+              <option value="">Select category...</option>
+              <option value="electronics">Electronics</option>
+              <option value="clothing">Clothing &amp; Accessories</option>
+              <option value="bags">Bags &amp; Backpacks</option>
+              <option value="keys">Keys &amp; Cards</option>
+              <option value="books">Books &amp; Stationery</option>
+              <option value="jewelry">Jewelry &amp; Personal</option>
+              <option value="sports">Sports &amp; Recreation</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="itemLocation">Location *</label>
+            <select id="itemLocation" required>
+              <option value="">Select location...</option>
+              <option value="library">Library</option>
+              <option value="cafeteria">Cafeteria</option>
+              <option value="lab">Computer Lab</option>
+              <option value="gym">Gymnasium</option>
+              <option value="parking">Parking Lot</option>
+              <option value="classroom">Classrooms</option>
+              <option value="hostel">Hostel</option>
+              <option value="auditorium">Auditorium</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="itemDate">Date *</label>
+            <input type="date" id="itemDate" required />
+          </div>
+          <div class="form-group">
+            <label for="itemColor">Color / Appearance</label>
+            <input type="text" id="itemColor" placeholder="e.g. Black and silver, Red with logo..." />
+          </div>
+          <div class="form-group full-width">
+            <label for="itemDescription">Description *</label>
+            <textarea id="itemDescription" rows="4" placeholder="Describe the item in detail — brand, model, any identifying marks, what was inside (if bag), etc." required></textarea>
+          </div>
+          <div class="form-group full-width">
+            <label for="itemPhoto">Upload Photo (optional)</label>
+            <div class="file-upload" id="fileUpload">
+              <input type="file" id="itemPhoto" accept="image/*" hidden />
+              <div class="file-upload-inner" id="fileUploadTrigger">
+                <span class="file-upload-icon">📷</span>
+                <span class="file-upload-text">Click to upload or drag &amp; drop</span>
+                <span class="file-upload-hint">PNG, JPG up to 5MB</span>
+              </div>
+              <div class="file-preview" id="filePreview" hidden></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contactName">Your Name *</label>
+            <input type="text" id="contactName" placeholder="Full name..." required />
+          </div>
+          <div class="form-group">
+            <label for="contactEmail">Email / Phone *</label>
+            <input type="text" id="contactEmail" placeholder="student@college.edu or +91 XXXXX..." required />
+          </div>
+        </div>
+        <div class="form-footer">
+          <p class="form-note">⚠️ Your contact info is only shared with verified claimants via our secure portal.</p>
+          <button type="submit" class="btn-primary btn-lg" id="submitBtn">
+            <span id="submitBtnText">Submit Report</span>
+            <span class="btn-loader hidden" id="btnLoader">⏳</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== ITEM DETAIL MODAL ===== -->
+  <div class="modal-overlay" id="itemDetailModal">
+    <div class="modal modal-detail" id="itemDetailContent">
+      <button class="modal-close" id="itemDetailClose">✕</button>
+      <div id="itemDetailBody"></div>
+    </div>
+  </div>
+
+  <!-- ===== SUCCESS TOAST ===== -->
+  <div class="toast" id="successToast">
+    <span class="toast-icon">✅</span>
+    <div class="toast-content">
+      <strong>Report Submitted!</strong>
+      <p>Your item has been listed. We'll notify you of any matches.</p>
+    </div>
+  </div>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="section-tag">📞 Get In Touch</div>
+          <h2 class="section-title">Need <span class="gradient-text">Help?</span></h2>
+          <p>Our campus security office manages all found items. Visit us in person or reach out digitally.</p>
+          <div class="contact-items">
+            <div class="contact-item">
+              <span class="contact-icon">📍</span>
+              <div>
+                <strong>Campus Security Office</strong>
+                <p>Ground Floor, Admin Block, Gate No. 1</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">🕐</span>
+              <div>
+                <strong>Office Hours</strong>
+                <p>Mon–Fri: 8AM – 8PM &nbsp;|&nbsp; Sat: 9AM – 5PM</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">📧</span>
+              <div>
+                <strong>Email</strong>
+                <p>lostandfound@college.edu</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">📞</span>
+              <div>
+                <strong>Phone</strong>
+                <p>+91 98765 43210</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form-wrapper">
+          <form class="contact-form" id="contactForm" novalidate>
+            <h3>Send a Message</h3>
+            <div class="form-group">
+              <label for="cName">Name *</label>
+              <input type="text" id="cName" placeholder="Your full name" required />
+            </div>
+            <div class="form-group">
+              <label for="cEmail">Email *</label>
+              <input type="email" id="cEmail" placeholder="your@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="cSubject">Subject</label>
+              <input type="text" id="cSubject" placeholder="e.g. Follow-up on my lost laptop" />
+            </div>
+            <div class="form-group">
+              <label for="cMsg">Message *</label>
+              <textarea id="cMsg" rows="4" placeholder="Tell us how we can help..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary btn-full">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo">
+            <span class="logo-icon">🔍</span>
+            <span class="logo-text">Campus<span class="logo-accent">Finder</span></span>
+          </a>
+          <p>Your college's official lost &amp; found portal. Helping students and staff get reunited with their belongings since 2024.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
+            <a href="#" class="social-link" aria-label="Instagram">📸</a>
+            <a href="#" class="social-link" aria-label="WhatsApp">💬</a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#browse">Browse Items</a></li>
+            <li><a href="#report">Report Item</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="#">Electronics</a></li>
+            <li><a href="#">Bags &amp; Backpacks</a></li>
+            <li><a href="#">Keys &amp; Cards</a></li>
+            <li><a href="#">Books &amp; Notes</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 CampusFinder. Made with ❤️ for students.</p>
+        <p>All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
